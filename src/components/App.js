@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import facade from "./apiFacade";
+import facade from "../utils/apiFacade";
 import LogIn, { LoggedIn } from "./LogIn.js";
 import Header from "./Header.js";
 import Starwars from "./Starwars.js";
