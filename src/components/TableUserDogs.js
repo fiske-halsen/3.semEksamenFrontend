@@ -1,6 +1,6 @@
 import facade from "../utils/apiFacade";
 import React, { useState, useEffect } from "react";
-function Starwars() {
+const TableUserDog = () => {
   let obj = {
     peopleName: "",
     planetName: "",
@@ -24,6 +24,6 @@ function Starwars() {
       <p>vehicle: {dataFromServer.vehicleName}</p>
     </div>
   );
-}
+};
 
 export default Starwars;
