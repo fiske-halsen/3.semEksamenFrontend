@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import facade from "../utils/apiFacade";
 import LogIn, { LoggedIn } from "./LogIn.js";
 import Header from "./Header.js";
-import Starwars from "./Starwars.js";
 import Admin from "./Admin.js";
 import User from "./User.js";
 import { Switch, Route } from "react-router-dom";
@@ -29,12 +28,12 @@ function App() {
     <div>
       <Header />
       <Switch>
+        <Route exact path="/">
+          {" "}
+          <h1> 3.Semester eksamen</h1>
+        </Route>
         {!loggedIn ? (
           <div>
-            <Route exact path="/">
-              {" "}
-              <h1> 3.Semester eksamen</h1>
-            </Route>
             <Route path="/login">
               <LogIn login={login} />
               <p>{error}</p>
