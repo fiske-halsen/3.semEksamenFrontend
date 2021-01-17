@@ -87,6 +87,18 @@ function apiFacade() {
     );
   };
 
+  const deleteDog = (dogId) => {
+    const options = makeOptions("DELETE", true);
+    return fetch(URL + "/api/info/delete/" + dogId, options).then(
+      handleHttpErrors
+    );
+  };
+
+  const editDog = (dogObj) => {
+    const options = makeOptions("PUT", true, dogObj);
+    return fetch(URL + "/api/info/edit/", options).then(handleHttpErrors);
+  };
+
   const makeOptions = (method, addToken, body) => {
     var opts = {
       method: method,
@@ -114,6 +126,8 @@ function apiFacade() {
     getRole,
     postDog,
     fetchAllDogsByUser,
+    deleteDog,
+    editDog,
   };
 }
 

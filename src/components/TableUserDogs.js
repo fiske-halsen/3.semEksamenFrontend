@@ -1,9 +1,10 @@
 import facade from "../utils/apiFacade";
 import React, { useState, useEffect } from "react";
-const TableUserDog = ({ reloadTable, setReloadTable }) => {
+const TableUserDog = ({ reloadTable, setReloadTable, setEditDogObj }) => {
   let userDogs = {
     dogs: [
       {
+        id: "",
         name: "",
         dateOfBirth: "",
         info: "",
@@ -15,16 +16,53 @@ const TableUserDog = ({ reloadTable, setReloadTable }) => {
   const [dataFromServer, setDataFromServer] = useState(userDogs);
 
   useEffect(() => {
-    facade.fetchAllDogsByUser().then((data) => setDataFromServer(data));
+    facade.fetchAllDogsByUser().then((dogs) => setDataFromServer(dogs));
     setReloadTable(false);
   }, [reloadTable]);
 
-  const tableItems = dataFromServer.dogs.map((data, index) => (
+  const deleteDog = (evt) => {
+    evt.preventDefault();
+    let dogId = evt.target.id;
+    facade.deleteDog(dogId);
+    setReloadTable(true);
+  };
+
+  const findDogToEdit = (evt) => {
+    evt.preventDefault();
+    let dogId = evt.target.id;
+    console.log(dogId);
+    dataFromServer.dogs.forEach((dog) => {
+      if (dog.id == dogId) {
+        setEditDogObj({ ...dog, id: dog.id });
+      }
+    });
+  };
+
+  const tableItems = dataFromServer.dogs.map((dog, index) => (
     <tr key={index}>
-      <td>{data.name}</td>
-      <td>{data.dateOfBirth}</td>
-      <td>{data.info}</td>
-      <td>{data.breed}</td>
+      <td>{dog.name}</td>
+      <td>{dog.dateOfBirth}</td>
+      <td>{dog.info}</td>
+      <td>{dog.breed}</td>
+
+      <button
+        id={dog.id}
+        onClick={deleteDog}
+        type="submit"
+        className="btn btn-primary"
+      >
+        {" "}
+        Delete{" "}
+      </button>
+      <button
+        id={dog.id}
+        onClick={findDogToEdit}
+        type="submit"
+        className="btn btn-primary"
+      >
+        {" "}
+        Edit{" "}
+      </button>
     </tr>
   ));
 
