@@ -12,7 +12,7 @@ function Header(props) {
         </li>
         <li>
           <NavLink activeClassName="active" to="/user">
-            User
+            My Profile
           </NavLink>
         </li>
         <li>
@@ -21,8 +21,8 @@ function Header(props) {
           </NavLink>
         </li>
         <li>
-          <NavLink activeClassName="active" to="/starwars">
-            Starwars
+          <NavLink activeClassName="active" to="/login">
+            Login/register
           </NavLink>
         </li>
       </ul>
