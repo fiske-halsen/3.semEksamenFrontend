@@ -4,6 +4,7 @@ import LogIn, { LoggedIn } from "./LogIn.js";
 import Header from "./Header.js";
 import Admin from "./Admin.js";
 import User from "./User.js";
+import AllBreeds from "./AllBreeds";
 import { Switch, Route } from "react-router-dom";
 
 function App() {
@@ -32,6 +33,11 @@ function App() {
           {" "}
           <h1> 3.Semester eksamen</h1>
         </Route>
+        <Route path="/dogbreeds">
+          {" "}
+          <AllBreeds />
+        </Route>
+
         {!loggedIn ? (
           <div>
             <Route path="/login">
