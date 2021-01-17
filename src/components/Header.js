@@ -16,6 +16,12 @@ function Header(props) {
           </NavLink>
         </li>
         <li>
+          <NavLink activeClassName="active" to="/dogbreeds">
+            Dog breeds
+          </NavLink>
+        </li>
+
+        <li>
           <NavLink activeClassName="active" to="/admin">
             Admin
           </NavLink>

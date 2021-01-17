@@ -99,6 +99,18 @@ function apiFacade() {
     return fetch(URL + "/api/info/edit/", options).then(handleHttpErrors);
   };
 
+  const fetchAllBreeds = () => {
+    const options = makeOptions("GET", true);
+    return fetch(URL + "/api/info/alldogs/", options).then(handleHttpErrors);
+  };
+
+  const fetchDetailAboutBreed = (breed) => {
+    const options = makeOptions("GET", true);
+    return fetch(URL + "/api/info/dog/" + breed, options).then(
+      handleHttpErrors
+    );
+  };
+
   const makeOptions = (method, addToken, body) => {
     var opts = {
       method: method,
@@ -128,6 +140,8 @@ function apiFacade() {
     fetchAllDogsByUser,
     deleteDog,
     editDog,
+    fetchAllBreeds,
+    fetchDetailAboutBreed,
   };
 }
 
