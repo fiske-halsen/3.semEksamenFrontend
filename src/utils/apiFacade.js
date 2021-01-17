@@ -62,16 +62,8 @@ function apiFacade() {
 
   const fetchData = () => {
     const options = makeOptions("GET", true); //True add's the token
-
     let role = getRole();
-
     return fetch(URL + "/api/info/" + role, options).then(handleHttpErrors);
-  };
-
-  const fetchStarwars = () => {
-    const options = makeOptions("GET");
-
-    return fetch(URL + "/api/info/parrallel/", options).then(handleHttpErrors);
   };
 
   const postDog = (pet) => {
@@ -84,6 +76,15 @@ function apiFacade() {
       breed: pet.breed,
     });
     return fetch(URL + "/api/info/adddog/", options).then(handleHttpErrors);
+  };
+
+  const fetchAllDogsByUser = () => {
+    let username = getUserName();
+    const options = makeOptions("GET", true);
+
+    return fetch(URL + "/api/info/alldogs/" + username, options).then(
+      handleHttpErrors
+    );
   };
 
   const makeOptions = (method, addToken, body) => {
@@ -110,9 +111,9 @@ function apiFacade() {
     login,
     logout,
     fetchData,
-    fetchStarwars,
     getRole,
     postDog,
+    fetchAllDogsByUser,
   };
 }
 
