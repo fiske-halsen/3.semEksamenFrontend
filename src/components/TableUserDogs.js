@@ -68,10 +68,10 @@ const TableUserDog = ({ reloadTable, setReloadTable, setEditDogObj }) => {
 
   return (
     <div>
-      <h3 className="text-center my-5 font-weight-bold">
+      <h2 className="text-center my-5 font-weight-bold">
         {" "}
         A list of your dogs
-      </h3>
+      </h2>
       <table class="table">
         <thead>
           <tr>

@@ -43,12 +43,12 @@ const AllBreeds = () => {
         </Route>
         <Route exact path={path}>
           {" "}
-          <h3 className="text-center my-5 font-weight-bold">
+          <h2 className="text-center my-5 font-weight-bold">
             {" "}
             List of all breeds
-          </h3>
+          </h2>
           <div className="row ">
-            <div className="col-5"></div>
+            <div className="col-4"></div>
             <div className="col-4">
               <table class="table">
                 <thead>
@@ -60,7 +60,7 @@ const AllBreeds = () => {
                 <tbody> {tableItems}</tbody>
               </table>
             </div>
-            <div className="col-3"></div>
+            <div className="col-4"></div>
           </div>
         </Route>
       </Switch>
