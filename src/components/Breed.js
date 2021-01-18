@@ -20,8 +20,20 @@ const Breed = () => {
     facade
       .fetchDetailAboutBreed(breed)
       .then((breedDetail) => setBreedDetail(breedDetail));
-    console.log(breedDetail);
+
+    /*Ovenstående trigger et search, så vi sender det tilbage til vores API
+     Info teksten er for lang på nogle af dem til data basen exception
+     Tomme objekter bliver nogle gange sat in i databasen, skyldes at 
+     værdierne på obj nogle gange er null
+    
+    let searchObj = { name: breedDetail.breed, info: breedDetail.info };
+    console.log(searchObj);
+    facade.addSearch(searchObj);
+    setBreedDetail(breedDetailObj);
+     */
   }, [breed]);
+
+  useEffect(() => {}, [breedDetail]);
 
   return (
     <div>

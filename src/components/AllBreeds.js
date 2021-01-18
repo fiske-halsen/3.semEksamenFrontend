@@ -12,21 +12,36 @@ import {
 
 const AllBreeds = () => {
   let breedObj = { dogs: [{ breed: "" }] };
+  let searchBreedObj = { breed: "", info: "" };
 
   const [allBreeds, setAllBreeds] = useState(breedObj);
+  const [searchedBreed, setSearchedBreed] = useState(searchBreedObj);
   const { path, url } = useRouteMatch();
 
   useEffect(() => {
     facade.fetchAllBreeds().then((dogs) => setAllBreeds(dogs));
   }, []);
 
+  const addSearch = (evt) => {
+    evt.preventDefault();
+    let breedId = evt.target.id;
+    console.log(breedId);
+    allBreeds.dogs.forEach((dog) => {
+      if (dog.breed === breedId) {
+        console.log("if statement");
+        facade.addSearch({ name: breedId, info: "dummy" });
+      }
+    });
+    console.log(searchedBreed);
+  };
+
   const tableItems = allBreeds.dogs.map((dog, index) => (
     <tr key={index}>
       <td>{dog.breed}</td>
       <td>
-        <button id={dog.breed}>
-          {" "}
-          <NavLink to={`${url}/${dog.breed}`}>
+        {" "}
+        <button onClick={addSearch}>
+          <NavLink id={dog.breed} to={`${url}/${dog.breed}`}>
             {" "}
             Info om: {dog.breed}{" "}
           </NavLink>{" "}

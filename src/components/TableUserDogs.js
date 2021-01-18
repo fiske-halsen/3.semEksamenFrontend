@@ -13,10 +13,10 @@ const TableUserDog = ({ reloadTable, setReloadTable, setEditDogObj }) => {
     ],
   };
 
-  const [dataFromServer, setDataFromServer] = useState(userDogs);
+  const [listOfDogs, setListOfDogs] = useState(userDogs);
 
   useEffect(() => {
-    facade.fetchAllDogsByUser().then((dogs) => setDataFromServer(dogs));
+    facade.fetchAllDogsByUser().then((dogs) => setListOfDogs(dogs));
     setReloadTable(false);
   }, [reloadTable]);
 
@@ -31,14 +31,14 @@ const TableUserDog = ({ reloadTable, setReloadTable, setEditDogObj }) => {
     evt.preventDefault();
     let dogId = evt.target.id;
     console.log(dogId);
-    dataFromServer.dogs.forEach((dog) => {
+    listOfDogs.dogs.forEach((dog) => {
       if (dog.id == dogId) {
         setEditDogObj({ ...dog, id: dog.id });
       }
     });
   };
 
-  const tableItems = dataFromServer.dogs.map((dog, index) => (
+  const tableItems = listOfDogs.dogs.map((dog, index) => (
     <tr key={index}>
       <td>{dog.name}</td>
       <td>{dog.dateOfBirth}</td>

@@ -32,6 +32,9 @@ function App() {
         <Route exact path="/">
           {" "}
           <h1> 3.Semester eksamen</h1>
+          <h3> Logins</h3>
+          <p> User: Phillip pw: Masterrx8</p>
+          <p> admin: admin pw: admin</p>
         </Route>
         <Route path="/dogbreeds">
           {" "}
