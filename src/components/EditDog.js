@@ -3,14 +3,6 @@ import facade from "../utils/apiFacade";
 import React, { useState, useEffect } from "react";
 
 const EditDog = ({ setReloadTable, editDogObj }) => {
-  let obj = {
-    id: editDogObj.id,
-    name: editDogObj.name,
-    dateOfBirth: editDogObj.dateOfBirth,
-    info: editDogObj.info,
-    breed: editDogObj.breed,
-  };
-
   const [dogToEdit, setDogToEdit] = useState(editDogObj);
 
   const onChange = (evt) => {

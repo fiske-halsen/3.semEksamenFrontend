@@ -111,6 +111,25 @@ function apiFacade() {
     );
   };
 
+  const fetchTotalSearches = () => {
+    const options = makeOptions("GET", true);
+    return fetch(URL + "/api/info/totalsearches/", options).then(
+      handleHttpErrors
+    );
+  };
+
+  const fetchTotalSearchesByBreed = (breed) => {
+    const options = makeOptions("GET", true);
+    return fetch(URL + "/api/info/totalsearches/" + breed, options).then(
+      handleHttpErrors
+    );
+  };
+
+  const addSearch = (searchObj) => {
+    const options = makeOptions("POST", true, searchObj);
+    return fetch(URL + "/api/info/addsearch/", options).then(handleHttpErrors);
+  };
+
   const makeOptions = (method, addToken, body) => {
     var opts = {
       method: method,
@@ -142,6 +161,9 @@ function apiFacade() {
     editDog,
     fetchAllBreeds,
     fetchDetailAboutBreed,
+    fetchTotalSearches,
+    fetchTotalSearchesByBreed,
+    addSearch,
   };
 }
 
